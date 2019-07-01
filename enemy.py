@@ -8,10 +8,10 @@ class SmallEnemy(pygame.sprite.Sprite):
         self.image = pygame.image.load("images/enemy1.png").convert_alpha()
         self.destory_images = []
         self.destory_images.extend([\
-            pygame.image.load("enemy1_down1.png").convert_alpha(), \
-            pygame.image.load("enemy1_down2.png").convert_alpha(), \
-            pygame.image.load("enemy1_down3.png").convert_alpha(), \
-            pygame.image.load("enemy1_down4.png").convert_alpha() \
+            pygame.image.load("images/enemy1_down1.png").convert_alpha(), \
+            pygame.image.load("images/enemy1_down2.png").convert_alpha(), \
+            pygame.image.load("images/enemy1_down3.png").convert_alpha(), \
+            pygame.image.load("images/enemy1_down4.png").convert_alpha() \
             ])
         self.rect = self.image.get_rect()
         self.width,self.height = bg_size[0],bg_size[1]
@@ -39,10 +39,10 @@ class MidEnemy(pygame.sprite.Sprite):
         self.image = pygame.image.load("images/enemy2.png").convert_alpha()
         self.destory_images = []
         self.destory_images.extend([\
-            pygame.image.load("enemy2_down1.png").convert_alpha(), \
-            pygame.image.load("enemy2_down2.png").convert_alpha(), \
-            pygame.image.load("enemy3_down3.png").convert_alpha(), \
-            pygame.image.load("enemy2_down4.png").convert_alpha() \
+            pygame.image.load("images/enemy2_down1.png").convert_alpha(), \
+            pygame.image.load("images/enemy2_down2.png").convert_alpha(), \
+            pygame.image.load("images/enemy3_down3.png").convert_alpha(), \
+            pygame.image.load("images/enemy2_down4.png").convert_alpha() \
             ])
         self.rect = self.image.get_rect()
         self.width,self.height = bg_size[0],bg_size[1]
@@ -71,12 +71,12 @@ class BigEnemy(pygame.sprite.Sprite):
         self.image2 = pygame.image.load("images/enemy3_n2.png").convert_alpha()
         self.destory_images = []
         self.destory_images.extend([\
-            pygame.image.load("enemy3_down1.png").convert_alpha(), \
-            pygame.image.load("enemy3_down2.png").convert_alpha(), \
-            pygame.image.load("enemy3_down3.png").convert_alpha(), \
-            pygame.image.load("enemy3_down4.png").convert_alpha(),\
-            pygame.image.load("enemy3_down5.png").convert_alpha(),\
-            pygame.image.load("enemy3_down6.png").convert_alpha() \
+            pygame.image.load("images/enemy3_down1.png").convert_alpha(), \
+            pygame.image.load("images/enemy3_down2.png").convert_alpha(), \
+            pygame.image.load("images/enemy3_down3.png").convert_alpha(), \
+            pygame.image.load("images/enemy3_down4.png").convert_alpha(),\
+            pygame.image.load("images/enemy3_down5.png").convert_alpha(),\
+            pygame.image.load("images/enemy3_down6.png").convert_alpha() \
             ])
         self.rect = self.image1.get_rect()
         self.width,self.height = bg_size[0],bg_size[1]
