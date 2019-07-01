@@ -118,6 +118,12 @@ def main():
                     enemy3_fly_sound.play()
                     #飞机损毁
             else:
+                enemy3_down_sound.play()
+                if not (delay%3):
+                    screen.blit(each.destory_images[e3_destory_index],each.rect)
+                    e3_destory_index = (e3_destory_index+1) % 6
+                    if e3_destory_index == 0:
+                        each.reset()
 
         # 绘制敌方中型飞机
         for each in mid_enemies:
