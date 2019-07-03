@@ -75,10 +75,10 @@ def main():
 
     clock = pygame.time.Clock()
     #中弹图片索引
-    e1_destory_index = 0
-    e2_destory_index = 0
-    e3_destory_index = 0
-    me_destory_index = 0
+    e1_destroy_index = 0
+    e2_destroy_index = 0
+    e3_destroy_index = 0
+    me_destroy_index = 0
     #用于切换图片
     switch_image = True
     #用于延迟
@@ -119,7 +119,7 @@ def main():
             else:
 
                 if not (delay%3):
-                    if e3_destory_index == 0:
+                    if e3_destroy_index == 0:
                         enemy3_down_sound.play()
                     screen.blit(each.destroy_images[e3_destroy_index],each.rect)
                     e3_destroy_index = (e3_destroy_index+1) % 6
@@ -135,7 +135,7 @@ def main():
             else:
                 #敌方中型飞机毁灭
                 if not (delay%3):
-                    if e2_destory_index == 0:
+                    if e2_destroy_index == 0:
                         enemy2_down_sound.play()
                     screen.blit(each.destroy_images[e2_destroy_index],each.rect)
                     e2_destroy_index = (e2_destroy_index+1) % 4
@@ -150,7 +150,7 @@ def main():
             else:
                 #敌方小型飞机毁灭
                 if not (delay % 3):
-                    if e1_destory_index == 0:
+                    if e1_destroy_index == 0:
                         enemy1_down_sound.play()
                     screen.blit(each.destroy_images[e1_destroy_index], each.rect)
                     e1_destroy_index = (e1_destroy_index + 1) % 4
@@ -172,7 +172,7 @@ def main():
             #我方飞机毁灭
 
             if not (delay%3):
-                if me_destory_index ==0:
+                if me_destroy_index ==0:
                     me_down_sound.play()
                 screen.blit(me.destroy_images[me_destroy_index],me.rect)
                 me_destroy_index = (me_destroy_index+1) % 4
