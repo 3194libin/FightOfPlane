@@ -113,8 +113,8 @@ def main():
                 else:
                     screen.blit(each.image2, each.rect)
                 # 当大型飞机出现之前，播放音效
-                if each.rect.bottom > -50:
-                    enemy3_fly_sound.play()
+                if each.rect.bottom == -50:
+                    enemy3_fly_sound.play(-1)
                     #飞机损毁
             else:
                 enemy3_down_sound.play()
@@ -122,6 +122,7 @@ def main():
                     screen.blit(each.destroy_images[e3_destroy_index],each.rect)
                     e3_destroy_index = (e3_destroy_index+1) % 6
                     if e3_destroy_index == 0:
+                        me_down_sound.stop()
                         each.reset()
 
         # 绘制敌方中型飞机
@@ -165,8 +166,10 @@ def main():
                 screen.blit(me.image2,me.rect)
         else:
             #我方飞机毁灭
-            me_down_sound.play()
+
             if not (delay%3):
+                if me_destory_index ==0:
+                    me_down_sound.play()
                 screen.blit(me.destroy_images[me_destroy_index],me.rect)
                 me_destroy_index = (me_destroy_index+1) % 4
                 if me_destroy_index == 0:

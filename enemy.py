@@ -6,8 +6,8 @@ class SmallEnemy(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = pygame.image.load("images/enemy1.png").convert_alpha()
-        self.destory_images = []
-        self.destory_images.extend([\
+        self.destroy_images = []
+        self.destroy_images.extend([\
             pygame.image.load("images/enemy1_down1.png").convert_alpha(), \
             pygame.image.load("images/enemy1_down2.png").convert_alpha(), \
             pygame.image.load("images/enemy1_down3.png").convert_alpha(), \
@@ -37,8 +37,8 @@ class MidEnemy(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = pygame.image.load("images/enemy2.png").convert_alpha()
-        self.destory_images = []
-        self.destory_images.extend([\
+        self.destroy_images = []
+        self.destroy_images.extend([\
             pygame.image.load("images/enemy2_down1.png").convert_alpha(), \
             pygame.image.load("images/enemy2_down2.png").convert_alpha(), \
             pygame.image.load("images/enemy3_down3.png").convert_alpha(), \
@@ -69,8 +69,8 @@ class BigEnemy(pygame.sprite.Sprite):
 
         self.image1 = pygame.image.load("images/enemy3_n1.png").convert_alpha()
         self.image2 = pygame.image.load("images/enemy3_n2.png").convert_alpha()
-        self.destory_images = []
-        self.destory_images.extend([\
+        self.destroy_images = []
+        self.destroy_images.extend([\
             pygame.image.load("images/enemy3_down1.png").convert_alpha(), \
             pygame.image.load("images/enemy3_down2.png").convert_alpha(), \
             pygame.image.load("images/enemy3_down3.png").convert_alpha(), \
