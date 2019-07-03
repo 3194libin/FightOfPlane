@@ -117,12 +117,14 @@ def main():
                     enemy3_fly_sound.play(-1)
                     #飞机损毁
             else:
-                enemy3_down_sound.play()
+
                 if not (delay%3):
+                    if e3_destory_index == 0:
+                        enemy3_down_sound.play()
                     screen.blit(each.destroy_images[e3_destroy_index],each.rect)
                     e3_destroy_index = (e3_destroy_index+1) % 6
                     if e3_destroy_index == 0:
-                        me_down_sound.stop()
+                        enemy3_fly_sound.stop()
                         each.reset()
 
         # 绘制敌方中型飞机
@@ -132,8 +134,9 @@ def main():
                 screen.blit(each.image, each.rect)
             else:
                 #敌方中型飞机毁灭
-                enemy2_down_sound.play()
                 if not (delay%3):
+                    if e2_destory_index == 0:
+                        enemy2_down_sound.play()
                     screen.blit(each.destroy_images[e2_destroy_index],each.rect)
                     e2_destroy_index = (e2_destroy_index+1) % 4
                     if e2_destroy_index == 0:
@@ -146,8 +149,9 @@ def main():
                 screen.blit(each.image, each.rect)
             else:
                 #敌方小型飞机毁灭
-                enemy1_down_sound.play()
                 if not (delay % 3):
+                    if e1_destory_index == 0:
+                        enemy1_down_sound.play()
                     screen.blit(each.destroy_images[e1_destroy_index], each.rect)
                     e1_destroy_index = (e1_destroy_index + 1) % 4
                     if e1_destroy_index == 0:
