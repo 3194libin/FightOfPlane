@@ -103,7 +103,6 @@ def main():
         if key_pressed[K_d] or key_pressed[K_RIGHT]:
             me.moveRight()
 
-
         screen.blit(background,(0,0))
         #绘制敌方大型飞机
         for each in big_enemies:
