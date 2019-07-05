@@ -127,7 +127,11 @@ def main():
                 if enemy_hit:
                     b.active = False
                     for e in enemy_hit:
-                        e.active =False
+                        if e in mid_enemies or e in big_enemies:
+                            if e.energy == 0:
+                                e.active = False
+                        else:
+                            e.active =False
 
         #绘制敌方大型飞机
         for each in big_enemies:
