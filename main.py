@@ -3,6 +3,7 @@ import sys
 import traceback
 import myplane
 import enemy
+import bullet
 from pygame.locals import *
 from random import *
 pygame.init()
@@ -72,6 +73,14 @@ def main():
 
     big_enemies = pygame.sprite.Group()
     add_big_enemies(big_enemies, enemies,2)
+
+    #生成普通子弹
+
+    bullet1 = []
+    bullet1_index = 0
+    BULLET_NUM = 4
+    for i in range(BULLET_NUM):
+        bullet1.append(bullet.Bullet1(me.rect.midtop))
 
     clock = pygame.time.Clock()
     #中弹图片索引
