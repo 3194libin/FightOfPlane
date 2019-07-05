@@ -128,6 +128,7 @@ def main():
                     b.active = False
                     for e in enemy_hit:
                         if e in mid_enemies or e in big_enemies:
+                            e.energy -= 1
                             if e.energy == 0:
                                 e.active = False
                         else:

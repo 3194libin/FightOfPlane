@@ -43,7 +43,7 @@ class MidEnemy(pygame.sprite.Sprite):
         self.destroy_images.extend([\
             pygame.image.load("images/enemy2_down1.png").convert_alpha(), \
             pygame.image.load("images/enemy2_down2.png").convert_alpha(), \
-            pygame.image.load("images/enemy3_down3.png").convert_alpha(), \
+            pygame.image.load("images/enemy2_down3.png").convert_alpha(), \
             pygame.image.load("images/enemy2_down4.png").convert_alpha() \
             ])
         self.rect = self.image.get_rect()
