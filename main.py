@@ -150,7 +150,18 @@ def main():
                                  (each.rect.left,each.rect.top - 5),\
                                  (each.rect.right,each.rect.top - 5),\
                                     2)
-                #
+                #当生命值大于20%，血条现实绿色，否则显示红色
+                energy_remain = each.energy/enemy.BigEnemy.energy
+                if energy_remain > 0.2:
+                    energy_color = GREEN
+                else:
+                    energy_color = RED
+                pygame.draw.line(screen,energy_color,\
+                                 (each.rect.left,each.rect.top - 5),\
+                                 (each.rect.left + each.rect.width * energy_remain,\
+                                 each.rect.top - 5),\
+                                    2
+                                 )
                 # 当大型飞机出现之前，播放音效
                 if each.rect.bottom == -50:
                     enemy3_fly_sound.play(-1)
@@ -171,6 +182,23 @@ def main():
             if each.active:
                 each.move()
                 screen.blit(each.image, each.rect)
+                # 绘制血槽
+                pygame.draw.line(screen, BLACK, \
+                                 (each.rect.left, each.rect.top - 5), \
+                                 (each.rect.right, each.rect.top - 5), \
+                                 2)
+                # 当生命值大于20%，血条现实绿色，否则显示红色
+                energy_remain = each.energy / enemy.MidEnemy.energy
+                if energy_remain > 0.2:
+                    energy_color = GREEN
+                else:
+                    energy_color = RED
+                pygame.draw.line(screen, energy_color, \
+                                 (each.rect.left, each.rect.top - 5), \
+                                 (each.rect.left + each.rect.width * energy_remain, \
+                                  each.rect.top - 5), \
+                                 2
+                                 )
             else:
                 #敌方中型飞机毁灭
                 if not (delay%3):
