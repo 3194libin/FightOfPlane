@@ -110,7 +110,8 @@ def main():
    # pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
     #用于切换图片
     switch_image = True
-
+    #生命数量
+    life_num = 1
     # 游戏结束画面
     gameover_font = pygame.font.Font("font/font.TTF", 48)
     again_image = pygame.image.load("images/again.png").convert_alpha()
@@ -279,8 +280,9 @@ def main():
                 screen.blit(me.destroy_images[me_destroy_index],me.rect)
                 me_destroy_index = (me_destroy_index+1) % 4
                 if me_destroy_index == 0:
+                    life_num =0
                     print("GAME OVER!")
-                    running = False
+                    #running = False
 
             # 绘制全屏炸弹数量
         bomb_text = bomb_font.render("× %d" % bomb_num, True, WHITE)
@@ -292,6 +294,26 @@ def main():
         #绘制得分
         score_text = score_font.render("Score : %s" % str(score),True,WHITE)
         screen.blit(score_text,(10,5))
+        # 绘制结束界面
+        if life_num == 0:
+            # 背景音乐停止
+            pygame.mixer.music.stop()
+            # 停止全部音效
+            pygame.mixer.stop()
+
+            gameover_text1 = gameover_font.render("Your Score", True, (255, 255, 255))
+            gameover_text1_rect = gameover_text1.get_rect()
+            gameover_text1_rect.left, gameover_text1_rect.top = \
+                (width - gameover_text1_rect.width) // 2, height // 3
+            screen.blit(gameover_text1, gameover_text1_rect)
+
+            gameover_text2 = gameover_font.render(str(score), True, (255, 255, 255))
+            gameover_text2_rect = gameover_text2.get_rect()
+            gameover_text2_rect.left, gameover_text2_rect.top = \
+                (width - gameover_text2_rect.width) // 2, \
+                gameover_text1_rect.bottom + 10
+            screen.blit(gameover_text2, gameover_text2_rect)
+
         #切换图片，60帧，一秒切换12次
         if not (delay % 5):
             switch_image = not switch_image
