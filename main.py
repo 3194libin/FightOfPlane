@@ -16,6 +16,9 @@ pygame.display.set_caption('期末作业————————飞机大战')
 
 background = pygame.image.load('images/background.png').convert()
 
+BLACK = (0,0,0)
+GREEN = (0,255,2)
+RED = (255,0,0)
 #载入游戏音乐
 pygame.mixer.music.load("sound/game_music.ogg")
 pygame.mixer.music.set_volume(0.2)
@@ -142,6 +145,12 @@ def main():
                     screen.blit(each.image1,each.rect)
                 else:
                     screen.blit(each.image2, each.rect)
+                #绘制血槽
+                pygame.draw.line(screen,BLACK,\
+                                 (each.rect.left,each.rect.top - 5),\
+                                 (each.rect.right,each.rect.top - 5),\
+                                    2)
+                #
                 # 当大型飞机出现之前，播放音效
                 if each.rect.bottom == -50:
                     enemy3_fly_sound.play(-1)
