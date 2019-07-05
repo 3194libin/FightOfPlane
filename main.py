@@ -16,6 +16,7 @@ pygame.display.set_caption('期末作业————————飞机大战')
 
 background = pygame.image.load('images/background.png').convert()
 
+WHITE = (255,255,255)
 BLACK = (0,0,0)
 GREEN = (0,255,2)
 RED = (255,0,0)
@@ -251,6 +252,8 @@ def main():
                 if me_destroy_index == 0:
                     print("GAME OVER!")
                     running = False
+        score_text = score_font.render("Score : %s" % str(score),True,WHITE)
+        screen.blit(score_text,(10,5))
         #切换图片，60帧，一秒切换12次
         if not (delay % 5):
             switch_image = not switch_image
