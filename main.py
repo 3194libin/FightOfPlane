@@ -281,8 +281,8 @@ def main():
                 me_destroy_index = (me_destroy_index+1) % 4
                 if me_destroy_index == 0:
                     life_num =0
-                    print("GAME OVER!")
-                    #running = False
+                    me.reset()
+
 
             # 绘制全屏炸弹数量
         bomb_text = bomb_font.render("× %d" % bomb_num, True, WHITE)

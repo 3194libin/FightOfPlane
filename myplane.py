@@ -42,3 +42,9 @@ class MyPlane(pygame.sprite.Sprite):
             self.rect.left += self.speed
         else:
             self.rect.right = self.width
+    def reset(self):
+        self.rect.left, self.rect.top = \
+            (self.width - self.rect.width) // 2, \
+            self.height - self.rect.height - 60
+        self.active = True
+        self.invincible = True
