@@ -87,11 +87,15 @@ def main():
         bullet1.append(bullet.Bullet1(me.rect.midtop))
 
     clock = pygame.time.Clock()
+
     #中弹图片索引
     e1_destroy_index = 0
     e2_destroy_index = 0
     e3_destroy_index = 0
     me_destroy_index = 0
+    #统计用户得分
+    score = 0
+    score_font = pygame.font.Font("font/font.ttf",36)
     #用于切换图片
     switch_image = True
     #用于延迟
@@ -165,9 +169,8 @@ def main():
                 # 当大型飞机出现之前，播放音效
                 if each.rect.bottom == -50:
                     enemy3_fly_sound.play(-1)
-                    #飞机损毁
             else:
-
+                #飞机损毁
                 if not (delay%3):
                     if e3_destroy_index == 0:
                         enemy3_down_sound.play()
@@ -175,6 +178,7 @@ def main():
                     e3_destroy_index = (e3_destroy_index+1) % 6
                     if e3_destroy_index == 0:
                         enemy3_fly_sound.stop()
+                        score += 10000
                         each.reset()
 
         # 绘制敌方中型飞机
@@ -207,6 +211,7 @@ def main():
                     screen.blit(each.destroy_images[e2_destroy_index],each.rect)
                     e2_destroy_index = (e2_destroy_index+1) % 4
                     if e2_destroy_index == 0:
+                        score += 6000
                         each.reset()
 
         # 绘制敌方小型飞机
@@ -222,6 +227,7 @@ def main():
                     screen.blit(each.destroy_images[e1_destroy_index], each.rect)
                     e1_destroy_index = (e1_destroy_index + 1) % 4
                     if e1_destroy_index == 0:
+                        score += 1000
                         each.reset()
         #检测飞机是否被碰撞
         enemy_down = pygame.sprite.spritecollide(me,enemies,False)
@@ -237,7 +243,6 @@ def main():
                 screen.blit(me.image2,me.rect)
         else:
             #我方飞机毁灭
-
             if not (delay%3):
                 if me_destroy_index ==0:
                     me_down_sound.play()
