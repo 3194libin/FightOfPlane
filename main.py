@@ -78,8 +78,8 @@ def main():
 
     bullet1 = []
     bullet1_index = 0
-    BULLET_NUM = 4
-    for i in range(BULLET_NUM):
+    BULLET1_NUM = 4
+    for i in range(BULLET1_NUM):
         bullet1.append(bullet.Bullet1(me.rect.midtop))
 
     clock = pygame.time.Clock()
@@ -116,7 +116,7 @@ def main():
         #发射子弹
         if not(delay%10):
             bullet1[bullet1_index].reset(me.rect.midtop)
-            bullet1_index = (bullet1_index + 1) % BULLET_NUM
+            bullet1_index = (bullet1_index + 1) % BULLET1_NUM
         #检测子弹是否击中敌机
         for b in bullet1:
             if b.active:
