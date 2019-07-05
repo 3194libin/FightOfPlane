@@ -80,8 +80,7 @@ def main():
     big_enemies = pygame.sprite.Group()
     add_big_enemies(big_enemies, enemies,2)
 
-    #生成普通子弹
-
+    #生成子弹
     bullet1 = []
     bullet1_index = 0
     BULLET1_NUM = 4
@@ -111,6 +110,14 @@ def main():
     pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
     #用于切换图片
     switch_image = True
+
+    # 游戏结束画面
+    gameover_font = pygame.font.Font("font/font.TTF", 48)
+    again_image = pygame.image.load("images/again.png").convert_alpha()
+    again_rect = again_image.get_rect()
+    gameover_image = pygame.image.load("images/gameover.png").convert_alpha()
+    gameover_rect = gameover_image.get_rect()
+
     #用于延迟
     delay = 100
     running = True
@@ -120,7 +127,14 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-
+            elif event.type == KEYDOWN:
+                if event.key == K_SPACE:
+                    if bomb_num:
+                        bomb_num -= 1
+                        bomb_sound.play()
+                        for each in enemies:
+                            if each.rect.bottom > 0:
+                                each.active = False
         #检测用户键盘操作
         key_pressed = pygame.key.get_pressed()
 
