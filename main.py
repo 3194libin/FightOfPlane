@@ -113,6 +113,21 @@ def main():
             me.moveRight()
 
         screen.blit(background,(0,0))
+        #发射子弹
+        if not(delay%10):
+            bullet1[bullet1_index].reset(me.rect.midtop)
+            bullet1_index = (bullet1_index + 1) % BULLET_NUM
+        #检测子弹是否击中敌机
+        for b in bullet1:
+            if b.active:
+                b.move()
+                screen.blit(b.image,b.rect)
+                enemy_hit = pygame.sprite.spritecollide(b,enemies,False,pygame.sprite.collide_mask)
+                if enemy_hit:
+                    b.active = False
+                    for e in enemy_hit:
+                        e.active =False
+
         #绘制敌方大型飞机
         for each in big_enemies:
             if each.active:
