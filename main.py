@@ -4,6 +4,7 @@ import traceback
 import myplane
 import enemy
 import bullet
+import supply
 from pygame.locals import *
 from random import *
 
@@ -97,6 +98,17 @@ def main():
     #统计用户得分
     score = 0
     score_font = pygame.font.Font("font/font.ttf",36)
+    # 全屏炸弹
+    bomb_image = pygame.image.load('images/bomb.png').convert_alpha()
+    bomb_rect = bomb_image.get_rect()
+    bomb_font = pygame.font.Font("font/font.ttf", 48)
+    bomb_num = 3
+
+    # 每30秒发放一个补给包
+    bomb_supply = supply.Bomb_Supply(bg_size)
+
+    SUPPLY_TIME = USEREVENT
+    pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
     #用于切换图片
     switch_image = True
     #用于延迟
@@ -120,6 +132,16 @@ def main():
             me.moveLeft()
         if key_pressed[K_d] or key_pressed[K_RIGHT]:
             me.moveRight()
+
+        # 绘制全屏炸弹补给
+        if bomb_supply.active:
+            bomb_supply.move()
+            screen.blit(bomb_supply.image, bomb_supply.rect)
+            if pygame.sprite.collide_mask(me, bomb_supply):
+                get_bomb_sound.play()
+                if bomb_num < 3:
+                    bomb_num += 1
+                bomb_supply.active = False
 
         screen.blit(background,(0,0))
         #发射子弹
@@ -252,6 +274,15 @@ def main():
                 if me_destroy_index == 0:
                     print("GAME OVER!")
                     running = False
+
+            # 绘制全屏炸弹数量
+        bomb_text = bomb_font.render("× %d" % bomb_num, True, WHITE)
+        text_rect = bomb_text.get_rect()
+        screen.blit(bomb_image, (10, height - 10 - bomb_rect.height))
+        screen.blit(bomb_text, (20 + bomb_rect.width,
+                                height - 5 - text_rect.height))
+
+        #绘制得分
         score_text = score_font.render("Score : %s" % str(score),True,WHITE)
         screen.blit(score_text,(10,5))
         #切换图片，60帧，一秒切换12次
