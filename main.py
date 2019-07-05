@@ -106,8 +106,8 @@ def main():
     # 每30秒发放一个补给包
     bomb_supply = supply.Bomb_Supply(bg_size)
 
-    SUPPLY_TIME = USEREVENT
-    pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
+   # SUPPLY_TIME = USEREVENT
+   # pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
     #用于切换图片
     switch_image = True
 
@@ -148,15 +148,8 @@ def main():
             me.moveRight()
 
         # 绘制全屏炸弹补给
-        if bomb_supply.active:
-            bomb_supply.move()
-            screen.blit(bomb_supply.image, bomb_supply.rect)
-            if pygame.sprite.collide_mask(me, bomb_supply):
-                get_bomb_sound.play()
-                if bomb_num < 3:
-                    bomb_num += 1
-                bomb_supply.active = False
-
+        bomb_supply.move()
+        screen.blit(bomb_supply.image, bomb_supply.rect)
         screen.blit(background,(0,0))
         #发射子弹
         if not(delay%10):
