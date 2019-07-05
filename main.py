@@ -6,6 +6,7 @@ import enemy
 import bullet
 from pygame.locals import *
 from random import *
+
 pygame.init()
 pygame.mixer.init()
 
