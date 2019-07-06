@@ -154,6 +154,7 @@ def main():
         screen.blit(background,(0,0))
         #发射子弹
         if not(delay%10):
+            bullet_sound.play()
             bullet1[bullet1_index].reset(me.rect.midtop)
             bullet1_index = (bullet1_index + 1) % BULLET1_NUM
         #检测子弹是否击中敌机
@@ -283,7 +284,6 @@ def main():
                     life_num =0
                     me.reset()
 
-
             # 绘制全屏炸弹数量
         bomb_text = bomb_font.render("× %d" % bomb_num, True, WHITE)
         text_rect = bomb_text.get_rect()
@@ -323,7 +323,6 @@ def main():
             delay = 100
             
         pygame.display.flip()
-
         clock.tick(60)
 
 if __name__ == '__main__':
