@@ -103,11 +103,9 @@ def main():
     bomb_font = pygame.font.Font("font/font.ttf", 48)
     bomb_num = 3
 
-    # 每30秒发放一个补给包
+    # 生成补给
     bomb_supply = supply.Bomb_Supply(bg_size)
 
-   # SUPPLY_TIME = USEREVENT
-   # pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)
     #用于切换图片
     switch_image = True
     #生命数量
@@ -136,17 +134,19 @@ def main():
                         for each in enemies:
                             if each.rect.bottom > 0:
                                 each.active = False
+        screen.blit(background, (0, 0))
         #检测用户键盘操作
         key_pressed = pygame.key.get_pressed()
-
-        if key_pressed[K_w] or key_pressed[K_UP]:
-            me.moveUp()
-        if key_pressed[K_s] or key_pressed[K_DOWN]:
-            me.moveDown()
-        if key_pressed[K_a] or key_pressed[K_LEFT]:
-            me.moveLeft()
-        if key_pressed[K_d] or key_pressed[K_RIGHT]:
-            me.moveRight()
+        if life_num:
+            key_pressed = pygame.key.get_pressed()
+            if key_pressed[K_w] or key_pressed[K_UP]:
+                me.moveUp()
+            if key_pressed[K_s] or key_pressed[K_DOWN]:
+                me.moveDown()
+            if key_pressed[K_a] or key_pressed[K_LEFT]:
+                me.moveLeft()
+            if key_pressed[K_d] or key_pressed[K_RIGHT]:
+                me.moveRight()
 
         # 绘制全屏炸弹补给
         bomb_supply.move()
